@@ -1,0 +1,59 @@
+#!/bin/sh
+#
+### BEGIN INIT INFO
+# Provides:          bwbar
+# Required-Start:      $local_fs
+# Required-Stop:       $local_fs
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: generates text and graphical readout of current bandwidth use
+# Description:       This program will output a PNG and a text file that can be
+#                    used in scripts or be included in web pages to show current
+#                    bandwidth usage.
+### END INIT INFO
+
+if [ -r /etc/default/bwbar ]; then
+      . /etc/default/bwbar
+fi
+
+# default settings are suggestions, they may or may not fit your situation
+RUNME=/usr/sbin/bwbar
+
+case "$1" in
+	start)
+                if [ -z "$DIR" -a -z "$RUNAS" -a -z "$OPTIONS" ]
+                then
+                        echo "not starting bwbar, please edit /etc/default/bwbar"
+                        exit 0
+                fi
+		echo -n "Starting bandwidth bar daemon: "
+		start-stop-daemon --start -b -c $RUNAS --exec $RUNME -- --directory=$DIR $OPTIONS
+		echo "bwbar."
+		;;
+	stop)
+                if [ -z "$DIR" -a -z "$RUNAS" -a -z "$OPTIONS" ]
+                then
+                        exit 0
+                fi
+		echo -n "Stopping bandwidth bar daemon: "
+		start-stop-daemon --stop -u $RUNAS --exec $RUNME
+		echo "bwbar."
+		;;
+	restart|force-reload)
+                if [ -z "$DIR" -a -z "$RUNAS" -a -z "$OPTIONS" ]
+                then
+                        echo "not starting bwbar, please edit /etc/default/bwbar"
+                        exit 0
+                fi
+		echo -n "Restarting bandwidth bar daemon: "
+		start-stop-daemon --stop -u $RUNAS --exec $RUNME
+		sleep 1
+		start-stop-daemon --start -b -c $RUNAS --exec $RUNME -- --directory=$DIR $OPTIONS
+		echo "bwbar."
+		;;
+	*)
+		echo "Usage: /etc/init.d/bwbar {start|stop|restart|force-reload}"
+		exit 1
+esac
+
+exit 0

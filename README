@@ -1,0 +1,71 @@
+	    bwbar 1.2.2 by H. Peter Anvin <hpa@zytor.com>
+
+      http://www.kernel.org/pub/software/web/bwbar/
+      ftp://ftp.kernel.org/pub/software/web/bwbar/
+
+bwbar is a small program that generates a text and a graphical readout
+of the current bandwidth use.  It is currently for Linux only.
+
+It is used, among others, at http://www.kernel.org/.
+
+To compile:
+
+	./configure
+	make
+
+To set it up, create a script that contains the following commands:
+
+	#!/bin/sh -
+	cd /home/httpd/html/ubar
+	bwbar eth0 1.5 &
+
+... assuming you are connected to the Internet via the interface
+"eth0", you are on a 1.5 Mbit/s link, and you want the output files in
+the directory /home/httpd/html/ubar.
+
+This will create two files named "ubar.txt", a text fragment, and a
+PNG graphic named "ubar.png".  These can be included in an SHTML web
+page using the following commands (or something like it):
+
+<CENTER>
+<FONT SIZE="-1">
+<!--#include virtual="ubar/ubar.txt" -->
+</FONT>
+<BR>
+<IMG SRC="ubar/ubar.png" ALT="Bandwidth utilization bar" WIDTH=602 HEIGHT=6 BORDER=0>
+<!-- The bandwidth bar program is available at:
+ http://www.kernel.org/pub/software/web/bwbar/ -->
+</CENTER>
+
+
+In a PHP web page, you would instead do:
+
+
+<CENTER>
+<FONT SIZE="-1">
+<?php require('ubar/ubar.txt'); ?>
+</FONT>
+<BR>
+<IMG SRC="ubar/ubar.png" ALT="Bandwidth utilization bar" WIDTH=602 HEIGHT=6 BORDER=0>
+<!-- The bandwidth bar program is available at:
+ http://www.kernel.org/pub/software/web/bwbar/ -->
+</CENTER>
+
+
+Some aspects of the bwbar command can be customized with options.  The
+bwbar command has the following full usage description:
+
+Usage: bwbar [options] interface max_mbps
+Options: (defaults in parenthesis)
+   --input               -i   Measure input bandwidth
+   --output              -o   Measure output bandwidth (default)
+   --text-file <file>    -f   The name of the text output file (ubar.txt)
+   --png-file <file>     -p   The name of the graphical bar file (ubar.png)
+   --interval <seconds>  -t   The poll interval in seconds (15)
+   --width <pixels>      -x   Width of the graphical bar (600)
+   --height <pixels>     -y   Height of the graphical bar (4)
+   --border <pixels>     -b   Border width of the graphical bar (1)
+   --kbps                -k   Bandwidth is measured in kbit/s
+   --Mbps                -M   Bandwidth is measured in Mbit/s (default)
+   --Gbps                -G   Bandwidth is measured in Gbit/s
+   --help                -h   Display this text

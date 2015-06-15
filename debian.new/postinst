@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -e
+
+update-rc.d bwbar defaults >/dev/null
+invoke-rc.d bwbar start
+
+#DEBHELPER#
+
+exit 0

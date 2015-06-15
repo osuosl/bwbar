@@ -1,0 +1,16 @@
+Source: bwbar
+Section: net
+Priority: optional
+Maintainer: Julien Danjou <acid@debian.org>
+Build-Depends: debhelper (>> 7.0.0), libpng12-dev, cdbs
+Standards-Version: 3.9.2
+
+Package: bwbar
+Architecture: any
+Depends: ${shlibs:Depends}
+Description: generates text and graphical readout of current bandwidth use
+ This program will output a PNG and a text file that can be used in scripts
+ or be included in web pages to show current bandwidth usage.  The amount
+ of total bandwidth can be customized.  The PNG output appears as a bar graph
+ showing maximum possible usage with the current inbound or outbound usage 
+ shown as a differently colored bar.

@@ -1,0 +1,11 @@
+--- bwbar.c	2004-06-01 14:54:12.000000000 -0500
++++ ../tmp/bwbar-1.2/bwbar.c	2004-05-12 00:58:50.000000000 -0500
+@@ -315,7 +315,7 @@
+ 
+     /* Get interface info */
+     do {
+-      if ( fscanf(pnd, " %6[^:]:%u %u %u %u %u %u %u %u %u %u %u %u %u %u %u %u",
++      if ( fscanf(pnd, " %8[^:]:%u %u %u %u %u %u %u %u %u %u %u %u %u %u %u %u",
+ 		  ifc.name,
+ 		  &ifc.r_bytes, &ifc.r_pkt, &ifc.r_err, &ifc.r_drop,
+ 		  &ifc.r_fifo, &ifc.r_frame, &ifc.r_compr, &ifc.r_mcast,

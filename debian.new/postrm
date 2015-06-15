@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -e
+
+if [ "$1" = purge ]; then
+	update-rc.d bwbar remove >/dev/null
+fi
+
+#DEBHELPER#
+

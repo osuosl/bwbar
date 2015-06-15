@@ -1,0 +1,111 @@
+bwbar (1.2.3-2) unstable; urgency=low
+
+  * Fix FTBFS with libpng 1.5,
+    thanks to Nobuhiro Iwamatsu<iwamatsu@nigauri.org>
+    (Closes: #635742)
+  * Update dh compat to 7
+  * Bump standards version
+
+ -- Julien Danjou <acid@debian.org>  Thu, 28 Jul 2011 16:13:14 +0200
+
+bwbar (1.2.3-1) unstable; urgency=low
+
+  * New upstream release
+  * Bump standards version
+  * Add LSB section to init script
+  * Enhance init script
+
+ -- Julien Danjou <acid@debian.org>  Mon, 11 Sep 2006 14:05:37 +0200
+
+bwbar (1.2.2-4) unstable; urgency=low
+
+  * New maintainer
+  * Bump standards version
+  * Use debhelper 4
+  * Remove http://www.kernel.org from description since this is no more
+    accurate
+  * Update README.Debian
+  * Rework patches
+    - Handle new options correctly (Closes: #313231)
+  * Add manpage (Closes: #129668)
+  * Fix {pre,post}{rm,inst} scripts to use invoke-rc.d
+
+ -- Julien Danjou <acid@debian.org>  Sun, 23 Apr 2006 13:11:09 +0200
+
+bwbar (1.2.2-3.1) unstable; urgency=low
+
+  * NMU
+  * Fix a wrong setting in rules, causing FTBFS (Closes: #358940)
+
+ -- Julien Danjou <acid@debian.org>  Fri, 21 Apr 2006 18:03:11 +0200
+
+bwbar (1.2.2-3) unstable; urgency=low
+
+  * Applied patch from Adrian Reber that fixed the short flag (d) for
+    directory. (Closes: #260999)
+
+ -- Scott M. Dier <sdier@debian.org>  Sat, 24 Jul 2004 00:20:02 -0500
+
+bwbar (1.2.2-2) unstable; urgency=low
+
+  * Added Build-Depends on cdbs.
+
+ -- Scott M. Dier <sdier@debian.org>  Tue,  8 Jun 2004 07:36:25 -0500
+
+bwbar (1.2.2-1) unstable; urgency=low
+
+  * New upstream release (Closes: #250730)
+  * Converted to cdbs.
+  * Added patch to support {K,M,G}B/s. (Closes: #249852)
+
+ -- Scott M. Dier <sdier@debian.org>  Tue,  1 Jun 2004 15:01:34 -0500
+
+bwbar (1.2-7) unstable; urgency=low
+
+  * Fixed fscanf call in bwbar.c for longer interface names.
+    (Closes: #246054)
+  * Fixed README for inaccurate configuration information. (Closes: #229162)
+
+ -- Scott M. Dier <sdier@debian.org>  Wed, 12 May 2004 01:01:48 -0500
+
+bwbar (1.2-6) unstable; urgency=low
+
+  * Fixed init.d message about being unconfigured. (Closes: #199202)
+  * Recompiled against libpng3. (Closes: #180243)
+
+ -- Scott M. Dier <sdier@debian.org>  Wed, 10 Dec 2003 20:44:05 -0600
+
+bwbar (1.2-5) unstable; urgency=low
+
+  * Fixed that I didn't reperm the init.d script, this causes issues
+  because diffs don't keep permissions.  Closes: #122310
+
+ -- Scott M. Dier <sdier@debian.org>  Tue,  4 Dec 2001 01:08:37 -0600
+
+bwbar (1.2-4) unstable; urgency=low
+
+  * Didn't copy a line right in the init.d script, fixed. Closes: #119536
+
+ -- Scott M. Dier <sdier@debian.org>  Wed, 14 Nov 2001 14:31:34 -0600
+
+bwbar (1.2-3) unstable; urgency=low
+
+  * Fixed build-deps, added libpng2-dev.  closes: #114375
+
+ -- Scott M. Dier <sdier@debian.org>  Sat,  6 Oct 2001 20:27:46 -0500
+
+bwbar (1.2-2) unstable; urgency=low
+
+  * Added --directory function to daemon.
+
+ -- Scott M. Dier <sdier@debian.org>  Mon,  1 Oct 2001 02:00:52 -0500
+
+bwbar (1.2-1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Scott M. Dier <sdier@debian.org>  Sun, 30 Sep 2001 23:35:14 -0500
+
+Local variables:
+mode: debian-changelog
+End:

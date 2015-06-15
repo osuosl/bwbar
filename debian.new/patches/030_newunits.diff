@@ -1,0 +1,55 @@
+diff -u bwbar-1.2.orig/bwbar.c bwbar-1.2/bwbar.c
+--- bwbar-1.2.orig/bwbar.c	2004-05-19 16:36:16.000000000 +0200
++++ bwbar-1.2/bwbar.c	2004-05-19 16:38:12.000000000 +0200
+@@ -157,6 +157,9 @@
+   { "kbps",         0, 0, 'k' },
+   { "Mbps",         0, 0, 'M' },
+   { "Gbps",         0, 0, 'G' },
++  { "KBps",         0, 0, 'K' },
++  { "MBps",         0, 0, 'm' },
++  { "GBps",         0, 0, 'g' },
+   { "help",         0, 0, 'h' },
+   { 0, 0, 0, 0 }
+ };
+@@ -180,6 +183,9 @@
+ 	  "   --kbps                -k   Bandwidth is measured in kbit/s\n"
+ 	  "   --Mbps                -M   Bandwidth is measured in Mbit/s (default)\n"
+ 	  "   --Gbps                -G   Bandwidth is measured in Gbit/s\n"
++	  "   --KBps                -K   Bandwidth is measured in KB/s\n"
++	  "   --MBps                -m   Bandwidth is measured in MB/s\n"
++	  "   --GBps                -g   Bandwidth is measured in GB/s\n"
+ 	  "   --help                -h   Display this text\n",
+ 	  program);
+   exit(err);
+@@ -259,6 +265,18 @@
+       unit = 1.0e+9;
+       unit_name = "Gbit/s";
+       break;
++    case 'K':
++      unit = 8.0e+3;
++      unit_name = "KB/s";
++      break;
++    case 'm':
++      unit = 8.0e+6;
++      unit_name = "MB/s";
++      break;
++    case 'g':
++      unit = 8.0e+9;
++      unit_name = "GB/s";
++      break;
+     case 'h':
+       usage(0);
+       break;
+Common subdirectories: bwbar-1.2.orig/debian and bwbar-1.2/debian
+diff -u bwbar-1.2.orig/README bwbar-1.2/README
+--- bwbar-1.2.orig/README	2004-05-19 16:36:16.000000000 +0200
++++ bwbar-1.2/README	2004-05-19 16:38:14.000000000 +0200
+@@ -68,4 +71,8 @@
+    --kbps                -k   Bandwidth is measured in kbit/s
+    --Mbps                -M   Bandwidth is measured in Mbit/s (default)
+    --Gbps                -G   Bandwidth is measured in Gbit/s
++   --KBps                -K   Bandwidth is measured in KB/s
++   --MBps                -m   Bandwidth is measured in MB/s
++   --GBps                -g   Bandwidth is measured in GB/s
+    --help                -h   Display this text
++

@@ -1,0 +1,19 @@
+#!/bin/sh
+
+set -e
+
+case "$1" in
+	upgrade)
+		invoke-rc.d bwbar stop
+	;;
+	install)
+	;;
+	*)
+	echo "preinst called with unknown argument \`$1'" >&2
+	exit 0
+	;;
+esac
+
+#DEBHELPER#
+
+exit 0

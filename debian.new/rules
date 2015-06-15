@@ -1,0 +1,17 @@
+#!/usr/bin/make -f
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/class/autotools.mk
+include /usr/share/cdbs/1/rules/simple-patchsys.mk
+
+DEB_MAKE_INSTALL_TARGET = 
+
+cleanbuilddir::
+	rm -f config.log config.status
+
+common-install-arch common-install-indep:: common-install-impl
+common-install-impl::
+	cp $(CURDIR)/bwbar $(CURDIR)/debian/bwbar/usr/sbin/
+	cp $(CURDIR)/debian/otherfiles/bwbar $(CURDIR)/debian/bwbar/etc/init.d/
+	cp $(CURDIR)/debian/otherfiles/bwbar-default $(CURDIR)/debian/bwbar/etc/default/bwbar
+	chmod 755 $(CURDIR)/debian/bwbar/etc/init.d/bwbar

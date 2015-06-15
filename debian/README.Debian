@@ -1,0 +1,4 @@
+There is a /etc/default/bwbar file to configure before this package will
+work.
+
+Scott Dier <sdier@debian.org>

@@ -1,0 +1,15 @@
+This package was debianized by Scott M. Dier <sdier@debian.org> on
+Sun, 30 Sep 2001 23:35:14 -0500.
+
+It was downloaded from http://www.kernel.org/pub/software/web/bwbar/
+
+Upstream Author: Peter Anvin <hpa@zytor.com>
+
+Copyright:
+
+Copyright 1999-2001 H. Peter Anvin - All Rights Reserved
+
+You are free to distribute this software under the terms of
+the GNU General Public License.
+On Debian systems, the complete text of the GNU General Public
+License can be found in /usr/share/common-licenses/GPL file.

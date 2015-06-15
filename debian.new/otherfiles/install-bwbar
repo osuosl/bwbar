@@ -1,0 +1,5 @@
+#!/bin/sh
+cp bwbar debian/bwbar/usr/sbin/
+cp debian/otherfiles/bwbar debian/bwbar/etc/init.d/
+cp debian/otherfiles/bwbar-default debian/bwbar/etc/default/bwbar
+chmod 755 debian/bwbar/etc/init.d/bwbar

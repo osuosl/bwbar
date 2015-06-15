@@ -1,0 +1,33 @@
+dnl
+dnl autoconf input file to generate MCONFIG
+dnl
+
+AC_PREREQ(2.57)
+AC_REVISION([$Id: configure.in,v 1.2 2006/08/26 16:30:05 hpa Exp $])
+AC_INIT(MCONFIG.in)
+
+AC_PROG_CC
+AC_GNU_SOURCE
+AC_C_CONST
+AC_C_INLINE
+
+PA_ADD_CFLAGS(-Wall)
+PA_ADD_CFLAGS(-W)
+PA_ADD_CFLAGS(-Wpointer-arith)
+PA_ADD_CFLAGS(-Wbad-function-cast)
+PA_ADD_CFLAGS(-Wcast-equal)
+PA_ADD_CFLAGS(-Wstrict-prototypes)
+PA_ADD_CFLAGS(-Wnested-externs)
+PA_ADD_CFLAGS(-Winline)
+PA_ADD_CFLAGS(-Wshadow)
+PA_ADD_CFLAGS(-Wcast-align)
+PA_ADD_CFLAGS(-pipe)
+
+AC_SEARCH_LIBS(pow, m, , AC_ERROR([No math library found]))
+AC_SEARCH_LIBS(compress2, z, , AC_ERROR([No zlib library found]))
+AC_SEARCH_LIBS(png_create_write_struct, png, , AC_ERROR([No PNG library found]))
+
+AC_PROG_RANLIB
+AC_PROG_INSTALL
+
+AC_OUTPUT(MCONFIG)

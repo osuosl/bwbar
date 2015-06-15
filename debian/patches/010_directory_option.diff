@@ -1,0 +1,76 @@
+--- ./bwbar.c	2001-09-21 17:33:35.000000000 -0500
++++ ../bwbar-1.2/bwbar.c	2003-12-10 20:43:59.000000000 -0600
+@@ -147,6 +147,7 @@
+ const struct option longopts[] = {
+   { "input",        0, 0, 'i' },
+   { "output",       0, 0, 'o' },
++  { "directory",    1, 0, 'd' },
+   { "text-file",    1, 0, 'f' },
+   { "png-file",     1, 0, 'p' },
+   { "interval",     1, 0, 't' },
+@@ -169,6 +170,7 @@
+ 	  "Options: (defaults in parenthesis)\n"
+ 	  "   --input               -i   Measure input bandwidth\n"
+ 	  "   --output              -o   Measure output bandwidth (default)\n"
++	  "   --directory           -d   Output directory\n"
+ 	  "   --text-file <file>    -f   The name of the text output file (ubar.txt)\n"
+ 	  "   --png-file <file>     -p   The name of the graphical bar file (ubar.png)\n"
+ 	  "   --interval <seconds>  -t   The poll interval in seconds (15)\n"
+@@ -205,6 +207,8 @@
+   int measure_input = 0;	/* Input instead of output */
+   char *text_file = "ubar.txt";	/* Text filename */
+   char *graphics_file = "ubar.png"; /* Graphics filename */
++  char *directory = ""; /* Directory name */
++  char *tmp_char;
+   char *unit_name = "Mbit/s";	/* Unit name */
+   double unit = 1.0e+6;		/* Unit multiplier */
+   int interval = 15;		/* Interval between measurements (s) */
+@@ -214,7 +218,7 @@
+ 
+   program = argv[0];
+ 
+-  while ( (opt = getopt_long(argc, argv, "iof:p:t:x:y:b:kMGh", longopts, NULL)) != -1 ) {
++  while ( (opt = getopt_long(argc, argv, "iof:p:t:x:y:b:kMGhd:", longopts, NULL)) != -1 ) {
+     switch ( opt ) {
+     case 'i':
+       measure_input = 1;
+@@ -228,6 +232,9 @@
+     case 'p':
+       graphics_file = optarg;
+       break;
++    case 'd':
++      directory = optarg;
++      break;
+     case 't':
+       interval = atoi(optarg);
+       break;
+@@ -264,6 +271,18 @@
+   if ( argc-optind != 2 )
+     usage(1);
+ 
++  	tmp_char = text_file;
++	text_file = malloc(strlen(text_file) + strlen(directory) + 5);
++	strcpy(text_file, directory);
++	strcat(text_file, "/");
++	strcat(text_file, tmp_char);
++	
++	tmp_char = graphics_file;
++	graphics_file = malloc(strlen(graphics_file) + strlen(directory) + 5);
++	strcpy(graphics_file, directory);
++	strcat(graphics_file, "/");
++	strcat(graphics_file, tmp_char);
++
+   t_tmp = malloc(strlen(text_file) + 5);
+   g_tmp = malloc(strlen(graphics_file) + 5);
+   if ( !t_tmp || !g_tmp ) {
+diff -u bwbar-1.2.orig/README bwbar-1.2/README
+--- bwbar-1.2.orig/README       2004-05-19 16:36:16.000000000 +0200
++++ bwbar-1.2/README    2004-05-19 16:38:14.000000000 +0200
+@@ -59,6 +59,7 @@
+ Options: (defaults in parenthesis)
+    --input               -i   Measure input bandwidth
+    --output              -o   Measure output bandwidth (default)
++   --directory           -d   Output directory
+    --text-file <file>    -f   The name of the text output file (ubar.txt)
+    --png-file <file>     -p   The name of the graphical bar file (ubar.png)
+    --interval <seconds>  -t   The poll interval in seconds (15)

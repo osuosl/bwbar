@@ -1,0 +1,6 @@
+# Directory to put files into
+#DIR=/var/www
+# Who to run as
+#RUNAS=www-data
+# What are the options (eth0, scale of 1.5mbps)
+#OPTIONS="eth0 1.5"
